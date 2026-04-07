@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+
+body {
+  background: #0f140f; /* Hitam kehijauan pekat */
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 40px 0;
+}
+
+.portfolio-container {
+  max-width: 650px; /* Ukuran paling pas untuk form agar tidak melebar */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.section, .header-section {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Typography perbaikan kontras */
+h1 { font-weight: 700; letter-spacing: 2px; color: #ffffff; margin: 0; }
+.subtitle { color: #8fb339; font-size: 0.85rem; letter-spacing: 1px; margin-top: 8px; }
+h2 { font-size: 1.2rem; color: #ffffff; text-align: center; margin-bottom: 25px; border: none !important; }
+
+/* Form styling agar sejajar dan bersih */
+.form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
+.form-label { font-size: 0.8rem; font-weight: 600; color: #8fb339; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Input & Select Base Styling */
+.mapala-input, .mapala-select {
+  width: 100%; /* Pastikan semua lebar sama */
+  box-sizing: border-box;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1.5px solid rgba(143, 179, 57, 0.3);
+  border-radius: 12px;
+  color: #ffffff !important;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+/* KHUSUS SELECT: Perbaikan UI agar tidak 'jelek' saat diklik */
+.mapala-select {
+  appearance: none; /* Hilangkan panah default browser */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  /* Tambahkan panah custom warna hijau mapala */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238fb339' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+/* Memperbaiki tampilan list pilihan (option) */
+.mapala-select option {
+  background-color: #161b16; /* Background gelap saat list terbuka */
+  color: #ffffff;
+  padding: 10px;
+}
+
+.mapala-input:focus, .mapala-select:focus {
+  border-color: #8fb339;
+  outline: none;
+  background: rgba(143, 179, 57, 0.05) !important;
+}
+
+/* Tombol submit yang keren */
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: #8fb339;
+  color: #0f140f;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn-submit:hover {
+  background: #a9cc4f;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(143, 179, 57, 0.4);
+}
+
+/* Box Hasil Setelah Submit */
+.result-box {
+  margin-top: 25px;
+  padding: 20px;
+  background: rgba(143, 179, 57, 0.1);
+  border: 1px dashed #8fb339;
+  border-radius: 15px;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
