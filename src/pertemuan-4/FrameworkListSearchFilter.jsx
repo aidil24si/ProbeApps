@@ -2,19 +2,14 @@ import { useState } from "react";
 import frameworkData from "./framework.json";
 
 export default function FrameworkList() {
-  /** Deklarasi state **/
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTag, setSelectedTag] = useState("");
-  const [selectedDeveloper, setSelectedDeveloper] = useState(""); // State baru
-
-  /*Inisialisasi DataForm*/
+  /* 1. Inisialisasi DataForm di awal */
   const [dataForm, setDataForm] = useState({
     searchTerm: "",
     selectedTag: "",
-    /*Tambah state lain beserta default value*/
+    selectedDeveloper: "", // Tambahkan di sini agar konsisten
   });
 
-  /*Inisialisasi Handle perubahan nilai input form*/
+  /* 2. Handle perubahan nilai input form */
   const handleChange = (evt) => {
     const { name, value } = evt.target;
     setDataForm({
@@ -23,37 +18,31 @@ export default function FrameworkList() {
     });
   };
 
-  const _searchTerm = searchTerm.toLowerCase();
-  const _selectedTag = selectedTag.toLowerCase();
-  const _selectedDeveloper = selectedDeveloper.toLowerCase();
-  /** Deklarasi Logic Search & Filter **/
+  /* 3. Deklarasi Logic Search & Filter (Gunakan dataForm secara langsung) */
+  const _searchTerm = dataForm.searchTerm.toLowerCase();
 
   const filteredFrameworks = frameworkData.filter((framework) => {
-    // Filter berdasarkan teks
+    // Filter berdasarkan teks (Nama atau Deskripsi)
     const matchesSearch =
       framework.name.toLowerCase().includes(_searchTerm) ||
       framework.description.toLowerCase().includes(_searchTerm);
 
     // Filter berdasarkan tag
-    const matchesTag = selectedTag
-      ? framework.tags.includes(selectedTag)
+    const matchesTag = dataForm.selectedTag 
+      ? framework.tags.includes(dataForm.selectedTag) 
       : true;
 
-    // Filter berdasarkan developer (Baru)
-    const matchesDeveloper = selectedDeveloper
-      ? framework.details.developer === selectedDeveloper
+    // Filter berdasarkan developer
+    const matchesDeveloper = dataForm.selectedDeveloper 
+      ? framework.details.developer === dataForm.selectedDeveloper 
       : true;
 
     return matchesSearch && matchesTag && matchesDeveloper;
   });
 
-  /** Deklarasi pengambilan data unik **/
+  /** Deklarasi pengambilan data unik untuk Dropdown **/
   const allTags = [...new Set(frameworkData.flatMap((f) => f.tags))].sort();
-
-  // Mengambil daftar developer unik (Baru)
-  const allDevelopers = [
-    ...new Set(frameworkData.map((f) => f.details.developer)),
-  ].sort();
+  const allDevelopers = [...new Set(frameworkData.map((f) => f.details.developer))].sort();
 
   return (
     <div className="p-8 bg-[#1a1a1a] min-h-screen font-serif text-[#d4af37]">
@@ -63,12 +52,14 @@ export default function FrameworkList() {
 
       {/* --- PANEL KONTROL KERAJAAN --- */}
       <div className="max-w-4xl mx-auto mb-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+        
         {/* Search Input */}
         <input
           type="text"
           placeholder="Cari naskah..."
           className="p-3 bg-[#262626] border border-amber-700 rounded-sm focus:ring-1 focus:ring-amber-500 outline-none text-amber-200"
           name="searchTerm"
+          value={dataForm.searchTerm}
           onChange={handleChange}
         />
 
@@ -76,27 +67,25 @@ export default function FrameworkList() {
         <select
           className="p-3 bg-[#262626] border border-amber-700 rounded-sm focus:ring-1 focus:ring-amber-500 outline-none text-amber-200"
           name="selectedTag"
+          value={dataForm.selectedTag}
           onChange={handleChange}
         >
           <option value="">Semua Tag</option>
           {allTags.map((tag, index) => (
-            <option key={index} value={tag}>
-              ◈ {tag}
-            </option>
+            <option key={index} value={tag}>◈ {tag}</option>
           ))}
         </select>
 
-        {/* Filter Developer (Baru) */}
+        {/* Filter Developer */}
         <select
           className="p-3 bg-[#262626] border border-amber-700 rounded-sm focus:ring-1 focus:ring-amber-500 outline-none text-amber-200"
           name="selectedDeveloper"
+          value={dataForm.selectedDeveloper}
           onChange={handleChange}
         >
           <option value="">Semua Penempa (Dev)</option>
           {allDevelopers.map((dev, index) => (
-            <option key={index} value={dev}>
-              ⚙ {dev}
-            </option>
+            <option key={index} value={dev}>⚙ {dev}</option>
           ))}
         </select>
       </div>
@@ -113,7 +102,6 @@ export default function FrameworkList() {
                          animate-fade-in-up"
               style={{ animationDelay: `${idx * 150}ms` }}
             >
-              {/* Ornamen Sudut */}
               <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-amber-400"></div>
               <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-amber-400"></div>
 
@@ -132,9 +120,7 @@ export default function FrameworkList() {
                 </span>
                 <span className="mx-2">|</span>
                 Tahun Era:{" "}
-                <span className="text-amber-200">
-                  {item.details.releaseYear}
-                </span>
+                <span className="text-amber-200">{item.details.releaseYear}</span>
               </p>
 
               <div className="mt-6">
@@ -165,23 +151,15 @@ export default function FrameworkList() {
           ))
         ) : (
           <div className="text-center p-20 border-2 border-dashed border-amber-900 rounded-lg">
-            <p className="text-amber-800 italic">
-              Maaf, naskah tidak ditemukan dalam pustaka ini.
-            </p>
+             <p className="text-amber-800 italic">Maaf, naskah tidak ditemukan dalam pustaka ini.</p>
           </div>
         )}
       </div>
 
       <style jsx>{`
         @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-in-up {
           animation: fadeInUp 0.8s ease-out forwards;
