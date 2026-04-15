@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "nama": "Pembersihan Karatan Tray",
+    "harga": 50000,
+    "image": "/assets/img/pembersihan-karatan-tray.png"
+  },
+  {
+    "id": 2,
+    "nama": "Layanan Pengiriman Motor",
+    "harga": 25000,
+    "image": "/assets/img/layanan-pengiriman-motor.png"
+  },
+  {
+    "id": 3,
+    "nama": "Vaksinasi Ayam Rutin",
+    "harga": 150000,
+    "image": "/assets/img/vaksinasi-ayam-rutin.png"
+  },
+  {
+    "id": 4,
+    "nama": "Cek Nutrisi Pakan",
+    "harga": 75000,
+    "image": "/assets/img/cek-nutrisi-pakan.png"
+  },
+  {
+    "id": 5,
+    "nama": "Penyemprotan Disinfektan",
+    "harga": 120000,
+    "image": "/assets/img/penyemprotan-disinfektan.png"
+  }
+]
