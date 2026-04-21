@@ -17,22 +17,22 @@ export default function Sidebar() {
                 <div id="sidebar-menu" className="mt-10">
                 <ul id="menu-list" className="space-y-3">
                     <li>
-                        <div id="menu-1" className="flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:text-hijau hover:font-extrabold">
+                        <Link to="/" id="menu-1" className="flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:text-hijau hover:font-extrabold">
                             <MdDashboard className="mr-4 text-xl" />
                             <span>Dashboard</span>
-                        </div>
+                        </Link>
                     </li>
                     <li>
-                        <div id="menu-2" className="flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:text-hijau hover:font-extrabold">
+                        <Link to="/orders" id="menu-2" className="flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:text-hijau hover:font-extrabold">
                             <MdOutlineAssignment className="mr-4 text-xl" />
                             <span>Orders</span>
-                        </div>
+                        </Link>
                     </li>
                     <li>
-                        <div id="menu-3" className="flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:text-hijau hover:font-extrabold">
+                        <Link to="/customers" id="menu-3" className="flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:text-hijau hover:font-extrabold">
                             <MdPeople className="mr-4 text-xl" />
                             <span>Customers</span>
-                        </div>
+                        </Link>
                     </li>
                 </ul>
             </div>
