@@ -8,7 +8,7 @@ export default function Dashboard() {
                 <StatCard icon={<FaShoppingCart />} count="75" label="Total Orders" color="green" />
                 <StatCard icon={<FaTruck />} count="357" label="Total Delivered" color="green" />
                 <StatCard icon={<FaBan />} count="65" label="Total Canceled" color="red" />
-                <StatCard icon={<FaDollarSign />} count="$128" label="Total Revenue" color="green" />
+                <StatCard icon={<FaDollarSign />} count="Rp.128.000" label="Total Revenue" color="green" />
             </div>
 
             <div id="extra-dashboard-component" className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
