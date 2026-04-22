@@ -1,62 +1,68 @@
 import PageHeader from "../components/PageHeader";
+// Pastikan path import ini sesuai dengan tempat kamu menyimpan file JSON tadi
+import orderData from "../data/orders.json"; 
 
 export default function Orders() {
     return (
-        <div id="orders-container" className="p-10 animate-in fade-in duration-700">   
-            {/* <PageHeader title="Orders" subtitle="Manage your restaurant orders here" /> */}
+        <div id="orders-container" className="p-10 animate-in fade-in duration-700">   
+            
+            {/* Mengaktifkan PageHeader dengan props baru */}
+            <PageHeader 
+                title="Orders" 
+                breadcrumb={["Dashboard", "Order List"]}
+            >
+                {/* Tombol Add Order dimasukkan sebagai children */}
+                <button 
+                    id="add-button" 
+                    className="bg-hijau hover:bg-green-600 text-white px-10 py-4 rounded-2xl font-bold shadow-xl shadow-green-100 transition-all active:scale-95 flex items-center gap-2"
+                >
+                    <span className="text-xl">+</span> Add New Order
+                </button>
+            </PageHeader>
 
-            <div id="orders-table" className="mt-10 overflow-x-auto rounded-[2rem] border border-gray-50 bg-white shadow-sm">           
+            <div id="orders-table" className="mt-10 overflow-x-auto rounded-[2rem] border border-gray-50 bg-white shadow-sm">           
                 <table className="w-full table-auto">
                     <thead className="bg-gray-50">
                         <tr>
-                            <th className="px-6 py-3 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Order ID</th>
-                            <th className="px-6 py-3 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Customer</th>
-                            <th className="px-6 py-3 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Items</th>
-                            <th className="px-6 py-3 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Total</th>
-                            <th className="px-6 py-3 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Status</th>
-                            <th className="px-6 py-3 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Actions</th>
+                            <th className="px-6 py-5 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Order ID</th>
+                            <th className="px-6 py-5 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Customer Name</th>
+                            <th className="px-6 py-5 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Status</th>
+                            <th className="px-6 py-5 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Total Price</th>
+                            <th className="px-6 py-5 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Order Date</th>
+                            <th className="px-6 py-5 text-left text-xs font-bold text-gray-400 uppercase tracking-wider text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100">
-                        <tr>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#1001</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">John Doe</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Burger, Fries</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$15.00</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm">
-                                <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">Completed</span>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm">
-                                <button className="text-blue-600 hover:text-blue-900 font-medium">View</button>
-                                <button className="ml-4 text-red-600 hover:text-red-900 font-medium">Cancel</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#1002</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Jane Smith</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Pizza, Salad</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$20.00</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm">
-                                <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800">Pending</span>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm">
-                                <button className="text-blue-600 hover:text-blue-900 font-medium">View</button>
-                                <button className="ml-4 text-red-600 hover:text-red-900 font-medium">Cancel</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#1003</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Alice Johnson</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Pasta, Wine</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$30.00</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm">
-                                <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800">Cancelled</span>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm">
-                                <button className="text-blue-600 hover:text-blue-900 font-medium">View</button>
-                                <button className="ml-4 text-red-600 hover:text-red-900 font-medium">Cancel</button>
-                            </td>
-                        </tr>
+                        {/* Iterasi 30 data dari JSON */}
+                        {orderData.map((order) => (
+                            <tr key={order.orderId} className="hover:bg-gray-50 transition-colors">
+                                <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">
+                                    #{order.orderId}
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                    {order.customerName}
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold ${
+                                        order.status === 'Completed' ? 'bg-green-100 text-green-700' : 
+                                        order.status === 'Pending' ? 'bg-yellow-100 text-yellow-700' : 
+                                        'bg-red-100 text-red-700'
+                                    }`}>
+                                        {order.status}
+                                    </span>
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-700">
+                                    {order.totalPrice}
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {order.orderDate}
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-center">
+                                    <button className="text-hijau hover:underline font-bold">View</button>
+                                    <button className="ml-4 text-red-500 hover:underline font-bold">Delete</button>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
