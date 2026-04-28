@@ -1,14 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
-import PageHeader from "./components/PageHeader";
 import Orders from "./pages/Orders";
 import Customers from "./pages/Customers";
 import ErrorPage from "./pages/ErrorPage"; // Import komponen ErrorPage
+import PageHeader from "./components/PageHeader";
 import AuthLayout from "./layouts/AuthLayout";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import Forgot from "./pages/auth/Forgot";
 import MainLayout from "./layouts/MainLayout";
 import "./assets/tailwind.css";
 
+
 function App() {
+  // const Dashboard = lazy(() => import("./pages/Dashboard"));
+  // const Orders = lazy(() => import("./pages/Orders"));
+  // const Customers = lazy(() => import("./pages/Customers"));
+  // const ErrorPage = lazy(() => import("./pages/ErrorPage"));
   return (
     <Routes>
       <Route element={<MainLayout />}>
@@ -60,11 +68,11 @@ function App() {
             />
           }
         />
-        {/* <Route element={<AuthLayout />}>
+      </Route>
+      <Route element={<AuthLayout />}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot" element={<Forgot />} />
-      </Route> */}
       </Route>
     </Routes>
   );
