@@ -1,6 +1,7 @@
 import PageHeader from "../components/PageHeader";
 // Import data JSON yang berisi 30 data customer
 import customerData from "../data/customers.json"; 
+import { Link } from "react-router-dom";
 
 export default function Customers() {
     return (
@@ -40,7 +41,11 @@ export default function Customers() {
                                     #{customer.id}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                                    {customer.name}
+                                    <Link 
+                                        to={`/customers/${customer.id}`} 
+                                        className="text-emerald-500 hover:text-emerald-700 font-semibold transition-colors">
+                                        {customer.name}
+                                    </Link>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {customer.email}

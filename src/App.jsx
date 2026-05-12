@@ -15,6 +15,10 @@ function App() {
   const Login = React.lazy(() => import("./pages/auth/Login"));
   const Register = React.lazy(() => import("./pages/auth/Register"));
   const Forgot = React.lazy(() => import("./pages/auth/Forgot"));
+  const Products = React.lazy(() => import("./pages/Products"));
+  const ProductDetail = React.lazy(() => import("./pages/ProductDetail"));
+  const CustomerDetail = React.lazy(() => import("./pages/CustomerDetail"))
+
   return (
     <Suspense fallback={<Loading />}>
       <Routes>
@@ -23,6 +27,9 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/customers" element={<Customers />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="/customers/:id" element={<CustomerDetail />} />
 
           {/* Error Pages Test Routes sesuai instruksi latihan */}
           <Route

@@ -35,6 +35,12 @@ export default function Sidebar() {
                             <span>Customers</span>
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/products" id="menu-4" className="flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:text-hijau hover:font-extrabold transition-all">
+                            <MdOutlineAssignment className="mr-4 text-xl" />
+                            <span>Products</span>
+                        </Link>
+                    </li>
 
                     {/* --- BAGIAN BARU: LIST MENU ERROR --- */}
                     <div className="pt-4 pb-2 px-4 text-[10px] font-bold uppercase tracking-widest text-gray-400">
