@@ -70,6 +70,12 @@ export default function Sidebar() {
                             <span>Reward</span>
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/fiturxyz" className="flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-red-100 hover:text-red-600 transition-all">
+                            <MdOutlineStars className="mr-4 text-xl" />
+                            <span>Fitur XYZ</span>
+                        </Link>
+                    </li>
                 </ul>
             </div>
 
