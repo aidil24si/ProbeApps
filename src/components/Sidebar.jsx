@@ -26,19 +26,19 @@ export default function Sidebar() {
                     <li>
                         <Link to="/orders" id="menu-2" className="flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:text-hijau hover:font-extrabold transition-all">
                             <MdOutlineAssignment className="mr-4 text-xl" />
-                            <span>Orders</span>
+                            <span>Order</span>
                         </Link>
                     </li>
                     <li>
                         <Link to="/customers" id="menu-3" className="flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:text-hijau hover:font-extrabold transition-all">
                             <MdPeople className="mr-4 text-xl" />
-                            <span>Customers</span>
+                            <span>Customer</span>
                         </Link>
                     </li>
                     <li>
                         <Link to="/products" id="menu-4" className="flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:text-hijau hover:font-extrabold transition-all">
                             <MdOutlineAssignment className="mr-4 text-xl" />
-                            <span>Products</span>
+                            <span>Product</span>
                         </Link>
                     </li>
 
