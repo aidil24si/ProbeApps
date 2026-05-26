@@ -16,8 +16,10 @@ function App() {
   const Register = React.lazy(() => import("./pages/auth/Register"));
   const Forgot = React.lazy(() => import("./pages/auth/Forgot"));
   const Products = React.lazy(() => import("./pages/Products"));
+  // Lazy load untuk file detail obat
   const ProductDetail = React.lazy(() => import("./pages/ProductDetail"));
-  const CustomerDetail = React.lazy(() => import("./pages/CustomerDetail"))
+  const CustomerDetail = React.lazy(() => import("./pages/CustomerDetail"));
+  const FiturXYZ = React.lazy(() => import("./pages/FiturXYZ"))
 
   return (
     <Suspense fallback={<Loading />}>
@@ -30,7 +32,7 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="/customers/:id" element={<CustomerDetail />} />
-
+          <Route path="/fiturxyz" element={<FiturXYZ/>}/>
           {/* Error Pages Test Routes sesuai instruksi latihan */}
           <Route
             path="/error-400"
