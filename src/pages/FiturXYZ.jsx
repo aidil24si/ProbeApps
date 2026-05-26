@@ -1,5 +1,16 @@
 import React from "react";
 import PageHeader from "../components/PageHeader";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 
 export default function FiturXYZ() {
   // Mock data untuk tabel CRUD
@@ -25,6 +36,35 @@ export default function FiturXYZ() {
           Fitur          
         </button>
       </PageHeader>
+
+      <Button variant="outline">Batal</Button>
+      <Button variant="ghost">Batal</Button>
+      <Button variant="destructive">Batal</Button>
+
+      <Card className="relative mx-auto w-full max-w-sm pt-0">
+      <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
+      <img
+        src="https://avatar.vercel.sh/shadcn1"
+        alt="Event cover"
+        className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
+      />
+      <CardHeader>
+        <CardAction>
+          <Badge variant="secondary">Featured</Badge>
+        </CardAction>
+        <CardTitle>Design systems meetup</CardTitle>
+        <CardDescription>
+          A practical talk on component APIs, accessibility, and shipping
+          faster.
+        </CardDescription>
+      </CardHeader>
+      <CardFooter>
+        <Button className="w-full">View Event</Button>
+      </CardFooter>
+    </Card>
+     <Badge variant="default | outline | secondary | destructive">Badge</Badge>
+
+    
 
       {/* --- KONTEN UTAMA FITUR XYZ --- */}
       <div className="flex flex-col gap-6 mt-8">
