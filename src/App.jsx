@@ -5,6 +5,7 @@ import PageHeader from "./components/PageHeader";
 import AuthLayout from "./layouts/AuthLayout";
 import MainLayout from "./layouts/MainLayout";
 import Loading from "./components/Loading";
+import Notes from "./pages/Notes";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="/customers/:id" element={<CustomerDetail />} />
           <Route path="/fiturxyz" element={<FiturXYZ/>}/>
+          <Route path="/notes" element={<Notes/>}/>
           {/* Error Pages Test Routes sesuai instruksi latihan */}
           <Route
             path="/error-400"
