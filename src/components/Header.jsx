@@ -2,9 +2,18 @@ import { useState } from "react";
 import { FaBell, FaSearch } from "react-icons/fa";
 import { FcAreaChart } from "react-icons/fc";
 import { SlSettings } from "react-icons/sl";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function Header() {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const { profile, logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        await logout();
+        navigate("/login", { replace: true });
+    };
 
     return (
         <div id="header-container" className="flex items-center justify-between bg-white px-10 py-4 shadow-sm relative">
@@ -70,7 +79,7 @@ export default function Header() {
                 <div id="profile-container" className="flex items-center gap-4 relative group">
                     <div className="text-right">
                         <p className="text-xs text-gray-400">Welcome,</p>
-                        <p className="text-sm font-bold text-gray-900">Aidil Ikhsan</p>
+                        <p className="text-sm font-bold text-gray-900">{profile?.full_name || "Admin"}</p>
                     </div>
                     <div className="relative">
                         <img
@@ -82,11 +91,11 @@ export default function Header() {
                         {/* Tooltip Card */}
                         <div className="absolute top-14 right-0 hidden group-hover:block w-56 bg-white border border-gray-100 shadow-2xl rounded-2xl p-5 z-50 animate-in slide-in-from-top-2">
                             <div className="text-center">
-                                <p className="font-bold text-gray-800">Aidil Ikhsan</p>
-                                <p className="text-[10px] text-gray-400 mb-4">Super Admin - Sedap Resto</p>
+                                <p className="font-bold text-gray-800">{profile?.full_name || "Admin"}</p>
+                                <p className="text-[10px] text-gray-400 mb-4">{profile?.role || "admin"} - Sedap Resto</p>
                                 <div className="space-y-2">
                                     <button className="w-full py-2 bg-gray-50 rounded-lg text-xs font-semibold text-gray-600 hover:bg-green-50 hover:text-green-600 transition-colors">Edit Profile</button>
-                                    <button className="w-full py-2 bg-red-50 rounded-lg text-xs font-semibold text-red-500 hover:bg-red-100 transition-colors">Logout</button>
+                                    <button onClick={handleLogout} className="w-full py-2 bg-red-50 rounded-lg text-xs font-semibold text-red-500 hover:bg-red-100 transition-colors">Logout</button>
                                 </div>
                             </div>
                         </div>
